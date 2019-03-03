@@ -10,13 +10,14 @@
 NXPMotionSense imu;
 
 const int ledPin = 13;
-int ledState = LOW;
+int ledState = HIGH;
 int ledFastblinks = 0;
 elapsedMillis ledMillis = 0;
 int loopcount = 0;
 void receiveCalibration();
 
 void setup() {
+  Serial.println("SETUP STARTED!");
   Serial.begin(115200);
   while (!Serial) ; // wait for serial port open
   imu.begin();
@@ -24,6 +25,7 @@ void setup() {
 }
 
 void loop() {
+  Serial.println("Looping!");
   int ax, ay, az;
   int gx, gy, gz;
   int mx, my, mz;
@@ -52,6 +54,7 @@ void loop() {
     Serial.println();
     loopcount = loopcount + 1;
   }
+ 
 
   // check for incoming calibration
   receiveCalibration();
