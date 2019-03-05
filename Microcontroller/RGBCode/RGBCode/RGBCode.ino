@@ -16,15 +16,15 @@ void setup() {
 // the loop routine runs over and over again forever:
 void loop() {
   setColor(255,255,255);
-  delay(10000);
-//  setColor(0,0,0);
-//  delay(10000);
-//  setColor(255,0,0);
-//  delay(10000);
-//  setColor(255,0,0);
-//  delay(10000);
-//  setColor(0,0,255);
-//  delay(10000);
+  delay(3000);
+  setColor(0,0,0);
+  delay(3000);
+  setColor(255,0,0);
+  delay(3000);
+  setColor(255,0,0);
+  delay(3000);
+  setColor(0,0,255);
+  delay(3000);
 }
 
 //rgb led controller, sets the pins to rgb from 0-255
