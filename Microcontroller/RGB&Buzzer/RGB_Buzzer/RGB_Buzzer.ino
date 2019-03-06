@@ -11,12 +11,13 @@ void setup() {
   pinMode(rPin, OUTPUT);
   pinMode(gPin, OUTPUT);
   pinMode(bPin, OUTPUT);
-  pinMode(piezoPin, OUTPUT);
+  pinMode(A0, OUTPUT);
   Serial.begin(9600);
 }
 
 // the loop routine runs over and over again forever:
 void loop() {
+  Serial.println("HI");
   //just an example of how to set color and have a delay, delay is in ms
   setColor(255, 255, 255);
   delay(3000);
@@ -24,7 +25,7 @@ void loop() {
   delay(3000);
   setColor(255, 0, 0);
   delay(3000);
-  setColor(255, 0, 0);
+  setColor(0, 255, 0);
   delay(3000);
   setColor(0, 0, 255);
   delay(3000);
@@ -40,8 +41,11 @@ void loop() {
 
 //rgb led controller, sets the pins to rgb from 0-255
 static void setColor( int r, int g, int b) {
-  analogWrite(255 - rPin, r);
-  analogWrite(255 - gPin, g);
-  analogWrite(255 - bPin, b);
-  Serial.printf("Color set to: %d, %d, %d \n", r, g, b);
+  analogWrite(rPin, r);
+  analogWrite(gPin, g);
+  analogWrite(bPin, b);
+  Serial.print("Color set to: ");
+  Serial.print(r);
+  Serial.print(g);
+  Serial.println(b);
 }
