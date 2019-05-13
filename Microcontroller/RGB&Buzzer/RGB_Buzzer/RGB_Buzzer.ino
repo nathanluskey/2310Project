@@ -1,4 +1,4 @@
-
+//Helpful Website: https://randomnerdtutorials.com/electronics-basics-how-do-rgb-leds-work/
 
 // the setup routine runs once when you press reset:
 int rPin = A1;
@@ -17,29 +17,40 @@ void setup() {
 
 // the loop routine runs over and over again forever:
 void loop() {
-  Serial.println("HI");
-  //just an example of how to set color and have a delay, delay is in ms
-  setColor(255, 255, 255);
-  delay(3000);
-  setColor(0, 0, 0);
-  delay(3000);
-  setColor(255, 0, 0);
-  delay(3000);
-  setColor(0, 255, 0);
-  delay(3000);
-  setColor(0, 0, 255);
-  delay(3000);
-
-  //buzzer code
-  /*Tone needs 2 arguments, but can take three
-    2) Frequency - this is in hertz (cycles per second) which determines the pitch of the noise made
-    3) Duration - how long teh tone plays
-  */
-  tone(piezoPin, 1000, 500);
-  delay(1000);
+  setColor(0,0,0);
+  tone(piezoPin, 0);
+  //1st alert
+  for (int i = 0; i < 1; i++); {
+    setColor(255, 0, 0);
+    delay(2500);
+    setColor(0, 0, 0);
+    tone(piezoPin, 800);
+    delay(500);
+    tone(piezoPin,0);
+    setColor(255, 0, 0);
+    delay(2000);
+  }
+  //2nd alert
+  for (int i = 0; i < 2; i++) {
+    setColor(255, 0, 0);
+    delay(1000);
+    setColor(0, 0, 0);
+    tone(piezoPin, 800);
+    delay(250);
+    tone(piezoPin, 0);
+    setColor(255,0,0);
+  }
+  //3rd alert
+  for (int i = 0; i < 3; i++) {
+    setColor(255,0,0);
+    tone(piezoPin, 800);
+    delay(500);
+  }
 }
 
 //rgb led controller, sets the pins to rgb from 0-255
+// check if it's anode or cathode because it might need to be x = 255 - x if it's common anode;
+// WE HAVE A COMMON CATHODE LED! no need to subtract
 static void setColor( int r, int g, int b) {
   analogWrite(rPin, r);
   analogWrite(gPin, g);

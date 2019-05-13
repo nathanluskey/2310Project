@@ -72,5 +72,5 @@ static void readData() {
   Serial.print(analogRead(zpin));
   Serial.println();
   // delay before next reading:
-  delay(1);
+  delay(100);
 }
